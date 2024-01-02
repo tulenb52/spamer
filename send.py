@@ -1,10 +1,12 @@
+import telethon.errors
 from telethon.sync import *
 import sys
 import logging
 from loguru import logger
+from telethon import errors
 from telethon.sessions import StringSession
 from telethon.errors.rpcerrorlist import PeerFloodError
-sys.stderr = open('log.txt', 'w')
+#sys.stderr = open('log.txt', 'w')
 
 class sms:
     phone = ''
@@ -22,16 +24,23 @@ class sms:
         self.msg = msg
         self.client = TelegramClient(session_path, api_id, api_hash)
         self.client.connect()
-        if self.client.is_user_authorized():
-            return("VALID")
-        else:
-            return ('NO VALID')
+        # if self.client.is_user_authorized():
+        #     print("VALID")
+        # else:
+        #     print('NO VALID')
 
 
     async def main(self):
         try:
             await self.client.send_message(self.id, self.msg)
-            logger.info(f'Отправил сообщение пользователю {self.id}')
+            logger.info(f'Отправил сообщение пользователю {self.id}, c аккаунта {self.session_path}')
+
+        except telethon.errors.SessionExpiredError:
+            print('1')
+
+        except telethon.errors.SessionRevokedError:
+            print('2')
+
         except Exception as E:
             if E == 'PeerFloodError':
                 return E

@@ -5,9 +5,7 @@ from send import sms
 from base import acc
 import os
 from loguru import logger
-import logging
 import json
-
 #find telehon sessions in directory
 ses = []
 temp_ses = os.listdir(path="..")
@@ -51,6 +49,10 @@ while True:
             print(api_cur, hash_cur, ses[account])
             msg = random.choice(messages) #choose message from list
             myClass = sms(ses[account], api_cur, hash_cur, users[user], msg) #send message
+            # if myClass.client.is_user_authorized():
+            #     print('sec')
+            # else:
+            #     print('nor')
             #print(myClass)
             hh = myClass.start()
             print(hh)
