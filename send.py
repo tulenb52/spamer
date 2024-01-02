@@ -16,18 +16,13 @@ class sms:
     msg = ''
     client  = ''
     session_path = ''
-    def __init__(self, session_path, api_id, api_hash, id, msg):
+    def __init__(self, session_path, api_id, api_hash, id, msg, client):
         self.session_path = session_path
         self.api_id = api_id
         self.api_hash = api_hash
         self.id = id
         self.msg = msg
-        self.client = TelegramClient(session_path, api_id, api_hash)
-        self.client.connect()
-        # if self.client.is_user_authorized():
-        #     return("VALID")
-        # else:
-        #     return('NO VALID')
+        self.client = client
 
 
     async def main(self):

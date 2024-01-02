@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Data files
+# А чо не добавил самое важное?
+*.session
+*.json
+
 # C extensions
 *.so
 

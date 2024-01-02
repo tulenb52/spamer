@@ -1,6 +1,8 @@
 import random
 import time
 
+from telethon import TelegramClient
+
 from send import sms
 from base import acc
 import os
@@ -8,12 +10,9 @@ from loguru import logger
 import json
 #find telehon sessions in directory
 ses = []
-<<<<<<< HEAD
 temp_ses = os.listdir(path="../")
 print(os.getcwd())
-=======
 temp_ses = os.listdir()
->>>>>>> 6988578bb68dd861c4e757ab2c8424a56f92d823
 #print(temp_ses)
 for temp_acc in temp_ses:
     if temp_acc[-7:-1] == 'sessio':
@@ -52,18 +51,21 @@ while True:
                 api_cur = data['app_id']
                 hash_cur = data['app_hash']
             print(api_cur, hash_cur, ses[account])
-            msg = random.choice(messages) #choose message from list
-            myClass = sms(ses[account], api_cur, hash_cur, users[user], msg) #send message
-            #print(myClass)
-            hh = myClass.start()
-            if myClass.client.is_user_authorized(): #check to valid sess
-                pass
+            client = TelegramClient(ses[account], api_cur, hash_cur)
+            client.connect()
+            if client.is_user_authorized():
+                print("авторизован")
+                #TODO: шлешь сообщение
             else:
-                account += 1
-                print('nor')
-            print(hh)
-            user += 1
-            count_apis += 1
+                print("нифига")
+                #TODO: берешь другой акк или шо там надо
+
+            # а это вставишь туда где сообщение отправлять
+            # msg = random.choice(messages) #choose message from list
+            # myClass = sms(ses[account], api_cur, hash_cur, users[user], msg, client) #send message
+            # hh = myClass.start()
+            # user += 1
+            # count_apis += 1
 
             if hh == 'PeerFloodError' or hh == 'ban': #check errors of spam or ban
                 if account+1 > len(ses):
