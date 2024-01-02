@@ -8,8 +8,12 @@ from loguru import logger
 import json
 #find telehon sessions in directory
 ses = []
+<<<<<<< HEAD
 temp_ses = os.listdir(path="../")
 print(os.getcwd())
+=======
+temp_ses = os.listdir()
+>>>>>>> 6988578bb68dd861c4e757ab2c8424a56f92d823
 #print(temp_ses)
 for temp_acc in temp_ses:
     if temp_acc[-7:-1] == 'sessio':
