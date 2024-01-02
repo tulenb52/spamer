@@ -36,7 +36,7 @@ class sms:
             if E == 'PeerFloodError':
                 return E
             if E == '':
-                return EE
+                return E
 
     def start(self):
         with self.client:
