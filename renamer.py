@@ -17,7 +17,7 @@ async def main(ses):
         await client(UploadProfilePhotoRequest(file = await client.upload_file('temp2.jpg')))
 
 allSessions = []
-temp_ses = os.listdir(path="..")
+temp_ses = os.listdir(path="")
 for temp_acc in temp_ses:
     if temp_acc[-7:-1] == 'sessio':
         allSessions.append(temp_acc)

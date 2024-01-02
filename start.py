@@ -8,7 +8,8 @@ from loguru import logger
 import json
 #find telehon sessions in directory
 ses = []
-temp_ses = os.listdir(path="..")
+temp_ses = os.listdir(path="../")
+print(os.getcwd())
 #print(temp_ses)
 for temp_acc in temp_ses:
     if temp_acc[-7:-1] == 'sessio':
@@ -49,20 +50,21 @@ while True:
             print(api_cur, hash_cur, ses[account])
             msg = random.choice(messages) #choose message from list
             myClass = sms(ses[account], api_cur, hash_cur, users[user], msg) #send message
-            # if myClass.client.is_user_authorized():
-            #     print('sec')
-            # else:
-            #     print('nor')
             #print(myClass)
             hh = myClass.start()
+            if myClass.client.is_user_authorized(): #check to valid sess
+                pass
+            else:
+                account += 1
+                print('nor')
             print(hh)
             user += 1
             count_apis += 1
 
-    if hh == 'PeerFloodError' or hh == 'ban': #check errors of spam or ban
-        if account+1 > len(ses):
-            logger.critical(f'Аккаунты для спама кончились')
-            time.sleep(120)
-            break
-        else:
-            account += 1
+            if hh == 'PeerFloodError' or hh == 'ban': #check errors of spam or ban
+                if account+1 > len(ses):
+                    logger.critical(f'Аккаунты для спама кончились')
+                    time.sleep(120)
+                    break
+                else:
+                    account += 1

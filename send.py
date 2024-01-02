@@ -25,9 +25,9 @@ class sms:
         self.client = TelegramClient(session_path, api_id, api_hash)
         self.client.connect()
         # if self.client.is_user_authorized():
-        #     print("VALID")
+        #     return("VALID")
         # else:
-        #     print('NO VALID')
+        #     return('NO VALID')
 
 
     async def main(self):
