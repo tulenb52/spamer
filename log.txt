@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/Users/tesk/PycharmProjects/parser/start.py", line 55, in <module>
+    hh = myClass.start()
+  File "/Users/tesk/PycharmProjects/parser/send.py", line 41, in start
+    with self.client:
+  File "/Users/tesk/PycharmProjects/parser/venv/lib/python3.7/site-packages/telethon/helpers.py", line 219, in _sync_enter
+    return loop.run_until_complete(self.__aenter__())
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py", line 571, in run_until_complete
+    self.run_forever()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py", line 539, in run_forever
+    self._run_once()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py", line 1775, in _run_once
+    handle._run()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/tesk/PycharmProjects/parser/venv/lib/python3.7/site-packages/telethon/client/auth.py", line 656, in __aenter__
+    return await self.start()
+  File "/Users/tesk/PycharmProjects/parser/venv/lib/python3.7/site-packages/telethon/client/auth.py", line 165, in _start
+    value = phone()
+  File "/Users/tesk/PycharmProjects/parser/venv/lib/python3.7/site-packages/telethon/client/auth.py", line 22, in <lambda>
+    phone: typing.Callable[[], str] = lambda: input('Please enter your phone (or bot token): '),
+KeyboardInterrupt
